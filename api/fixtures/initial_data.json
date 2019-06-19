@@ -1,0 +1,97 @@
+[
+  {
+    "model": "api.conveyor",
+    "pk": 1,
+    "fields": {
+      "name": "Conveyor 1"
+    }
+  },
+  {
+    "model": "api.scanner",
+    "pk": 1,
+    "fields": {
+      "name": "Scanner #1",
+      "conveyor": 1
+    }
+  },
+  {
+    "model": "api.material",
+    "pk": 1,
+    "fields": {
+      "name": "Scoria (Sap 7)"
+    }
+  },
+  {
+    "model": "api.customer",
+    "pk": 1,
+    "fields": {
+      "name": "Maveric Earth Movers"
+    }
+  },
+  {
+    "model": "api.job",
+    "pk": 1,
+    "fields": {
+      "external_id": "#00001243",
+      "target": 25000.0,
+      "belt_speed": 0.1,
+      "scanner": 1,
+      "material": 1,
+      "customer": 1
+    }
+  },
+  {
+    "model": "api.volume",
+    "pk": 1,
+    "fields": {
+      "value": 25.0,
+      "timestamp": "2019-06-19T11:55:17Z",
+      "job": 1
+    }
+  },
+  {
+    "model": "api.volume",
+    "pk": 2,
+    "fields": {
+      "value": 27.0,
+      "timestamp": "2019-06-19T11:58:49Z",
+      "job": 1
+    }
+  },
+  {
+    "model": "api.volume",
+    "pk": 3,
+    "fields": {
+      "value": 30.0,
+      "timestamp": "2019-06-19T11:59:01Z",
+      "job": 1
+    }
+  },
+  {
+    "model": "api.volume",
+    "pk": 4,
+    "fields": {
+      "value": 42.0,
+      "timestamp": "2019-06-19T12:55:17Z",
+      "job": 1
+    }
+  },
+  {
+    "model": "api.volume",
+    "pk": 5,
+    "fields": {
+      "value": 59.0,
+      "timestamp": "2019-06-19T12:58:49Z",
+      "job": 1
+    }
+  },
+  {
+    "model": "api.volume",
+    "pk": 6,
+    "fields": {
+      "value": 43.0,
+      "timestamp": "2019-06-19T12:59:01Z",
+      "job": 1
+    }
+  }
+]
