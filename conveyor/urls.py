@@ -19,10 +19,11 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 
-from api.views import JobViewSet
+from api.views import JobViewSet, ConveyorViewSet
 
 router = routers.DefaultRouter()
 router.register(r'job', JobViewSet)
+router.register(r'conveyor', ConveyorViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

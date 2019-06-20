@@ -38,3 +38,9 @@ class JobSerializer(serializers.ModelSerializer):
 
     def get_volumes(self, obj):
         return obj.get_volumes()
+
+
+class ConveyorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Conveyor
+        fields = '__all__'
