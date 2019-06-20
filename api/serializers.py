@@ -9,10 +9,6 @@ class MaterialSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ScannerSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Scanner
-        fields = '__all__'
 
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -26,10 +22,11 @@ class VolumeSerializer(serializers.ModelSerializer):
         model = models.Volume
         fields = '__all__'
 
+
 class JobSerializer(serializers.ModelSerializer):
     material = MaterialSerializer()
     customer = CustomerSerializer()
-    scanner = ScannerSerializer()
+
 
     volume_sum = serializers.SerializerMethodField()
     volume_set = VolumeSerializer(many=True)
@@ -42,8 +39,17 @@ class JobSerializer(serializers.ModelSerializer):
         return obj.get_volume_sum()
 
 
+class ScannerSerializer(serializers.ModelSerializer):
+    job_set = JobSerializer(many=True)
+
+    class Meta:
+        model = models.Scanner
+        fields = '__all__'
+
+
 class ConveyorSerializer(serializers.ModelSerializer):
     scanner_set = ScannerSerializer(many=True)
+
     class Meta:
         model = models.Conveyor
         fields = '__all__'
