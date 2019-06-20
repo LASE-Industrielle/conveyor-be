@@ -58,13 +58,6 @@ class Job(models.Model):
     def get_volume_sum(self):
         return sum(volume.value for volume in self.volume_set.all())
 
-    def get_volumes(self):
-        volumes = []
-        for volume in self.volume_set.all():
-            volumes.append(volume.value)
-
-        return volumes
-
 
 class Volume(models.Model):
     value = models.FloatField(default=0)
