@@ -59,7 +59,7 @@ class Job(models.Model):
 
     def get_volumes(self):
         volumes = []
-        for volume in self.volume_set.all().order_by('-id'):
+        for volume in self.volume_set.all():
             volumes.append(volume.value)
 
         return volumes
