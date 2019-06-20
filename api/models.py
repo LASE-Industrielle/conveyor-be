@@ -15,6 +15,7 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 class Conveyor(models.Model):
     name = models.CharField(max_length=200, default="")
+    description = models.CharField(max_length=200, default="")
 
     def __str__(self):
         return self.name
