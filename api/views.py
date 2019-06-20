@@ -11,3 +11,8 @@ class JobViewSet(viewsets.ModelViewSet):
 class ConveyorViewSet(viewsets.ModelViewSet):
     queryset = models.Conveyor.objects.all()
     serializer_class = serializers.ConveyorSerializer
+
+
+class ScannerViewSet(viewsets.ModelViewSet):
+    queryset = models.Scanner.objects.all()
+    serializer_class = serializers.ScannerSerializer
