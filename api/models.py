@@ -21,14 +21,6 @@ class Conveyor(models.Model):
         return self.name
 
 
-class Scanner(models.Model):
-    name = models.CharField(max_length=200, default="")
-    conveyor = models.ForeignKey(Conveyor, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-
 class Material(models.Model):
     name = models.CharField(max_length=200, default="")
 
@@ -46,24 +38,25 @@ class Customer(models.Model):
 class Job(models.Model):
     external_id = models.CharField(max_length=200, default="")
     target = models.FloatField(default=0)
-    belt_speed = models.FloatField(default=0)
 
-    scanner = models.ForeignKey(Scanner, on_delete=models.CASCADE)
+    conveyor = models.ForeignKey(Conveyor, on_delete=models.CASCADE, null=True)
     material = models.ForeignKey(Material, on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f'{self.external_id} ({self.get_volume_sum()} / {self.target} @ {self.belt_speed} m3/s)'
 
-    def get_volume_sum(self):
-        return sum(volume.value for volume in self.volume_set.all())
-
-
-class Volume(models.Model):
-    value = models.FloatField(default=0)
-    timestamp = models.DateTimeField(null=True)
-
+class Measurement(models.Model):
     job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True, null=True)
 
-    def __str__(self):
-        return f'{self.value}; Recorded: {self.timestamp}; Job ID: {self.job.id}'
+    conveyor_speed = models.FloatField(default=0)
+    material_density = models.FloatField(default=0)
+    area = models.FloatField(default=0)
+    volume_sum = models.FloatField(default=0)
+    volume_stream = models.FloatField(default=0)
+    mass_sum = models.FloatField(default=0)
+    mass_stream = models.FloatField(default=0)
+    conveyor_deviation = models.FloatField(default=0)
+    count_valid_pts = models.FloatField(default=0)
+    total_area = models.FloatField(default=0)
+    volume_stream_upper_limit = models.FloatField(default=0)
+    volume_stream_lower_limit = models.FloatField(default=0)

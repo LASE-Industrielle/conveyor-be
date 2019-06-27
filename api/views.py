@@ -13,6 +13,4 @@ class ConveyorViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ConveyorSerializer
 
 
-class ScannerViewSet(viewsets.ModelViewSet):
-    queryset = models.Scanner.objects.all()
-    serializer_class = serializers.ScannerSerializer
+
