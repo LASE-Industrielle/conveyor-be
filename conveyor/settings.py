@@ -40,8 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'channels',
     'api',
+    'receiver',
 ]
+
+ASGI_APPLICATION = "conveyor.routing.application"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
