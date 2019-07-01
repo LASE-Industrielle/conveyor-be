@@ -57,6 +57,5 @@ class Measurement(models.Model):
     mass_stream = models.FloatField(default=0)
     conveyor_deviation = models.FloatField(default=0)
     count_valid_pts = models.FloatField(default=0)
-    total_area = models.FloatField(default=0)
-    volume_stream_upper_limit = models.FloatField(default=0)
-    volume_stream_lower_limit = models.FloatField(default=0)
+    upper_limit = models.FloatField(default=0)
+    lower_limit = models.FloatField(default=0)

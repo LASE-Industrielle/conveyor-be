@@ -1,5 +1,9 @@
-from channels.generic.websocket import JsonWebsocketConsumer
 import json
+
+from channels.generic.websocket import JsonWebsocketConsumer
+
+from api.models import Measurement
+from receiver.service import create_measurement_from_json
 
 
 class ReceiverConsumer(JsonWebsocketConsumer):
@@ -11,4 +15,6 @@ class ReceiverConsumer(JsonWebsocketConsumer):
         pass
 
     def receive(self, text_data):
-        print(json.loads(text_data)['message'])
+        json_message = json.loads(text_data)
+        measurement = create_measurement_from_json(json_message)
+        Measurement.save(measurement)
