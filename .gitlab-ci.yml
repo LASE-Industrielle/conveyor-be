@@ -14,7 +14,7 @@ unit_tests:
   stage: test
   script:
     - export ENVIRONMENT=PIPELINE
-    - apk add postgresql-dev && apk add --no-cache --virtual .build-deps gcc musl-dev
+    - apk add postgresql-dev && apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev
     - pip install -r requirements.txt
     - python manage.py migrate
     - python manage.py test
