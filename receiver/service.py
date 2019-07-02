@@ -18,6 +18,4 @@ def create_measurement_from_json(json):
 
 
     }
-    job = Job.objects.filter(id=1).first()
-    m = Measurement(**values, job=job)
-    return m
+    return Measurement(**values, job_id=1)
